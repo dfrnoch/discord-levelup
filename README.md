@@ -3,6 +3,6 @@
 #### Its pretty shitty code :D, mby i will remake it.
 
 ### Usage:
-1. paste ur token into man.py
+1. paste ur token into main.py
 2. run it
 3. in channel write `!levelup <amount of messages>`
