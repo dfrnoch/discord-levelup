@@ -86,6 +86,7 @@ async def levelup(ctx,amount: int):
         await asyncio.sleep(60)
     return
 
+
 @client.event
 async def on_command_error(ctx, error):
     error_str = str(error)
@@ -96,5 +97,6 @@ async def on_command_error(ctx, error):
         print(f"{Fore.RED}Error: {Fore.WHITE}Discord error: {error}"+Fore.RESET)    
     else:
         print(f"{Fore.RED}Error: {Fore.WHITE}{error_str}"+Fore.RESET)
+
 
 Init()
