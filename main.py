@@ -2,6 +2,7 @@ import discord
 import random
 import string
 import asyncio
+import os
 from colorama import Fore
 
 from discord.ext import (
@@ -15,14 +16,15 @@ client = commands.Bot(
     self_bot=True
 )
 
-token = "ur-token"
-
+token = "NzI0NTc5OTc4OTIxOTAyMTE0.X0GJFw.1kKCAoIHyzmlVUFlA4hCidSAd5Y"
 
 
 def random_phrase(length):
     return ''.join(random.choice(string.ascii_uppercase) for i in range(length))
 
-
+os.system('cls')
+print(f"{Fore.GREEN}Bot is ready")
+print(f"{Fore.WHITE}Write {Fore.YELLOW}!levelup <number of messages>{Fore.WHITE} to start level up")
 
 @client.command()
 async def levelup(ctx,amount: int): # b'\xfc'
