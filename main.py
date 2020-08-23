@@ -16,10 +16,10 @@ client = commands.Bot(
     self_bot=True
 )
 
-token = "your token"
+token = "NzI0NTc5OTc4OTIxOTAyMTE0.X0JDUg.ny3GoXDHW99UXQtOEvo5zbWSDlo"
 
 
-def random_phrase(length):
+def random_symbols(length):
     return ''.join(random.choice(string.ascii_uppercase) for i in range(length))
 
 os.system('cls')
@@ -36,7 +36,7 @@ async def levelup(ctx,amount: int): # b'\xfc'
         print(f"{Fore.YELLOW}Messages left to send: {Fore.WHITE}{msgsend}")
         if msgsend == 0:
             print(f"\n{Fore.GREEN}All messages was sent")
-        rnd_out = random_phrase(5) + "-" + random_phrase(5) + " " + random_phrase(5) + "-" + random_phrase(5)
+        rnd_out = random_symbols(5) + "-" + random_symbols(5) + " " + random_symbols(5) + "-" + random_symbols(5)
         await ctx.send(rnd_out)
         await asyncio.sleep(1)
         async for message in ctx.message.channel.history(limit=1).filter(lambda m: m.author == client.user).map(lambda m: m):
