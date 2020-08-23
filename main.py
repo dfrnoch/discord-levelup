@@ -3,7 +3,11 @@ import random
 import string
 import asyncio
 import os
+import json
 from colorama import Fore
+
+
+
 
 from discord.ext import (
     commands,
@@ -16,8 +20,10 @@ client = commands.Bot(
     self_bot=True
 )
 
-token = "NzI0NTc5OTc4OTIxOTAyMTE0.X0JDUg.ny3GoXDHW99UXQtOEvo5zbWSDlo"
-
+with open('config.json') as f:
+    config = json.load(f)
+    
+token = config.get("token")
 
 def random_symbols(length):
     return ''.join(random.choice(string.ascii_uppercase) for i in range(length))
