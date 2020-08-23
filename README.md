@@ -2,7 +2,6 @@
 <h3 align="center">Automatically sends random mesage every minute</h3>
 <h4 align="center">⭐ Don't forget to leave a star! ⭐</h4>
 
-/ You can recommend what to add in Issues! \
 
 
 ## Usage:
