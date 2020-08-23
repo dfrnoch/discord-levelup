@@ -12,7 +12,7 @@
 5. In channel write `!levelup <amount of messages>`
 
 ## Settings:
-![Settings Showcase](https://i.imgur.com/Bxe3s1Q.png)
+![Settings Showcase](https://camo.githubusercontent.com/91fb91dbef076670a6791ffdea7bcf3591e36643/68747470733a2f2f7768657265732d6d792d74612e636f2f74504a58576c2e706e67)
 
 ## Showcase:
 ![Showcase](https://i.imgur.com/iEq1pLO.png)
