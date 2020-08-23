@@ -7,6 +7,8 @@ import json
 from colorama import Fore
 
 
+
+
 from discord.ext import (
     commands,
     tasks
@@ -25,7 +27,12 @@ with open('config.json') as f:
 token = config.get("token")
 
 
-
+def scale(time):
+    defined = 60
+    for unit in ["m", "h"]:
+        if time < defined:
+            return f"{time:.2f}{unit}"
+        time /= defined
 
 def Init():
     if config.get('token') == "token-here":
@@ -43,8 +50,10 @@ def Init():
 
 
 
-def random_symbols(length):
-    return ''.join(random.choice(string.ascii_uppercase) for i in range(length))
+def rnd1(length):
+    return ''.join(random.choice(string.ascii_letters) for i in range(length))
+def rnd2(length):
+    return ''.join(random.choice(string.ascii_lowercase) for i in range(length))
 
 os.system('cls')
 print(f"{Fore.GREEN}Bot is ready")
@@ -55,14 +64,14 @@ print(f"{Fore.WHITE}Write {Fore.YELLOW}!levelup <number of messages>{Fore.WHITE}
 async def levelup(ctx,amount: int):
     await ctx.message.delete()
     msgsend = amount
-    print(f"{Fore.YELLOW}Sending {msgsend} messages\n\n")
+    print(f"\n{Fore.YELLOW}Sending {msgsend} messages\nEstimated Time: {scale(msgsend)}\n")
     while msgsend > 0:
-        msgsend -= 1
-        print(f"{Fore.YELLOW}Messages left to send: {Fore.WHITE}{msgsend}")
-        if msgsend == 0:
-            print(f"\n{Fore.GREEN}All messages was sent")
-        output = random_symbols(5) + "-" + random_symbols(5) + " " + random_symbols(5) + "-" + random_symbols(5) + " " + random_symbols(5)
         try:
+            msgsend -= 1
+            print(f"{Fore.YELLOW}Message sent! | Messages left to send: {Fore.WHITE}{msgsend} {Fore.YELLOW}| {Fore.YELLOW}Estimated Time: {Fore.WHITE}{scale(msgsend)}")
+            if msgsend == 0:
+                print(f"\n{Fore.GREEN}All messages was sent")
+            output = rnd1(5) + " " + rnd2(5) + "-" + rnd2(5) + "-" + rnd2(5) + " " + rnd1(5)
             await ctx.send(output)
         except:
             print(f"{Fore.RED}Error: {Fore.WHITE}Cannot send message #{msgsend}")
