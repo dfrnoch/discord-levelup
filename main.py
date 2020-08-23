@@ -31,7 +31,7 @@ token = config.get("token")
 def Init():
     if config.get('token') == "token-here":
         os.system('cls')
-        print(f"\n\n{Fore.RED}Error {Fore.WHITE}You didnt put your token in the config.json file"+Fore.RESET)
+        print(f"\n\n{Fore.RED}Error {Fore.WHITE}You didnt put your token in the config.json file\n\n"+Fore.RESET)
         exit()
     else:
         token = config.get('token')
@@ -39,7 +39,7 @@ def Init():
             client.run(token, bot=False, reconnect=True)
             os.system(f'Discord LevelUpBot')
         except discord.errors.LoginFailure:
-            print(f"\n\n{Fore.RED}Error {Fore.WHITE}Token is invalid"+Fore.RESET)
+            print(f"\n\n{Fore.RED}Error {Fore.WHITE}Token is invalid\n\n"+Fore.RESET)
             exit()
 
 
