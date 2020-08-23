@@ -25,6 +25,25 @@ with open('config.json') as f:
     
 token = config.get("token")
 
+
+
+
+def Init():
+    if config.get('token') == "token-here":
+        os.system('cls')
+        print(f"\n\n{Fore.RED}Error {Fore.WHITE}You didnt put your token in the config.json file"+Fore.RESET)
+        exit()
+    else:
+        token = config.get('token')
+        try:
+            client.run(token, bot=False, reconnect=True)
+            os.system(f'Discord LevelUpBot')
+        except discord.errors.LoginFailure:
+            print(f"\n\n{Fore.RED}Error {Fore.WHITE}Token is invalid"+Fore.RESET)
+            exit()
+
+
+
 def random_symbols(length):
     return ''.join(random.choice(string.ascii_uppercase) for i in range(length))
 
@@ -64,4 +83,4 @@ async def on_command_error(ctx, error):
     else:
         print(f"{Fore.RED}Error: {Fore.WHITE}{error_str}"+Fore.RESET)
 
-client.run(token, bot=False, reconnect=True)
+Init()
