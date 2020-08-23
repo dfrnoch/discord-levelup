@@ -71,7 +71,7 @@ async def levelup(ctx,amount: int):
             print(f"{Fore.YELLOW}Message sent! | Messages left to send: {Fore.WHITE}{msgsend} {Fore.YELLOW}| {Fore.YELLOW}Estimated Time: {Fore.WHITE}{scale(msgsend)}")
             if msgsend == 0:
                 print(f"\n{Fore.GREEN}All messages was sent")
-            output = rnd1(5) + " " + rnd2(5) + "-" + rnd2(5) + "-" + rnd2(5) + " " + rnd1(5)
+            output = rnd1(5) + " " + rnd2(5) + "-" + rnd2(5) + "" + rnd2(5) + "-" + rnd2(5) + " " + rnd1(5)
             await ctx.send(output)
         except:
             print(f"{Fore.RED}Error: {Fore.WHITE}Cannot send message #{msgsend}")
