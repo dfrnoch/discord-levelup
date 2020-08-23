@@ -2,12 +2,7 @@ import discord
 import random
 import string
 import asyncio
-
-
-token = "ur-token"
-
-
-
+from colorama import Fore
 
 from discord.ext import (
     commands,
@@ -20,19 +15,23 @@ client = commands.Bot(
     self_bot=True
 )
 
+token = "ur-token"
+
+
 
 def random_phrase(length):
     return ''.join(random.choice(string.ascii_uppercase) for i in range(length))
+
 
 
 @client.command()
 async def levelup(ctx,amount: int): # b'\xfc'
     await ctx.message.delete()
     msgsend = amount
-    print(f"Sending {msgsend} messages\n\n")
+    print(f"{Fore.YELLOW}Sending {msgsend} messages\n\n")
     while msgsend > 0:
         msgsend -= 1
-        print(f"Messages left to send: {msgsend}")
+        print(f"{Fore.YELLOW}Messages left to send: {Fore.WHITE}{msgsend}")
         rnd_out = random_phrase(5) + "-" + random_phrase(5) + " " + random_phrase(5) + "-" + random_phrase(5)
         await ctx.send(rnd_out)
         await asyncio.sleep(1)
@@ -44,6 +43,15 @@ async def levelup(ctx,amount: int): # b'\xfc'
         await asyncio.sleep(59)
     return
 
-
+@client.event
+async def on_command_error(ctx, error):
+    error_str = str(error)
+    error = getattr(error, 'original', error)
+    if isinstance(error, commands.CommandNotFound):
+        return
+    elif isinstance(error, discord.errors.Forbidden):
+        print(f"{Fore.RED}Error: {Fore.WHITE}Discord error: {error}"+Fore.RESET)    
+    else:
+        print(f"{Fore.RED}Error: {Fore.WHITE}{error_str}"+Fore.RESET)
 
 client.run(token, bot=False, reconnect=True)
