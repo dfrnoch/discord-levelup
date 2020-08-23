@@ -7,8 +7,6 @@ import json
 from colorama import Fore
 
 
-
-
 from discord.ext import (
     commands,
     tasks
@@ -19,6 +17,7 @@ client = commands.Bot(
     command_prefix="!",
     self_bot=True
 )
+client.remove_command('help')
 
 with open('config.json') as f:
     config = json.load(f)
@@ -51,6 +50,7 @@ os.system('cls')
 print(f"{Fore.GREEN}Bot is ready")
 print(f"{Fore.WHITE}Write {Fore.YELLOW}!levelup <number of messages>{Fore.WHITE} to start level up")
 
+
 @client.command()
 async def levelup(ctx,amount: int):
     await ctx.message.delete()
@@ -61,7 +61,7 @@ async def levelup(ctx,amount: int):
         print(f"{Fore.YELLOW}Messages left to send: {Fore.WHITE}{msgsend}")
         if msgsend == 0:
             print(f"\n{Fore.GREEN}All messages was sent")
-        output = random_symbols(5) + "-" + random_symbols(5) + " " + random_symbols(5) + "-" + random_symbols(5)
+        output = random_symbols(5) + "-" + random_symbols(5) + " " + random_symbols(5) + "-" + random_symbols(5) + " " + random_symbols(5)
         try:
             await ctx.send(output)
         except:
