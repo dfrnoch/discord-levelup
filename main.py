@@ -52,7 +52,7 @@ print(f"{Fore.GREEN}Bot is ready")
 print(f"{Fore.WHITE}Write {Fore.YELLOW}!levelup <number of messages>{Fore.WHITE} to start level up")
 
 @client.command()
-async def levelup(ctx,amount: int): # b'\xfc'
+async def levelup(ctx,amount: int):
     await ctx.message.delete()
     msgsend = amount
     print(f"{Fore.YELLOW}Sending {msgsend} messages\n\n")
