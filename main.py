@@ -61,13 +61,18 @@ async def levelup(ctx,amount: int):
         print(f"{Fore.YELLOW}Messages left to send: {Fore.WHITE}{msgsend}")
         if msgsend == 0:
             print(f"\n{Fore.GREEN}All messages was sent")
-        rnd_out = random_symbols(5) + "-" + random_symbols(5) + " " + random_symbols(5) + "-" + random_symbols(5)
-        await ctx.send(rnd_out)
+        output = random_symbols(5) + "-" + random_symbols(5) + " " + random_symbols(5) + "-" + random_symbols(5)
+        try:
+            await ctx.send(output)
+        except:
+            print(f"{Fore.RED}Error: {Fore.WHITE}Cannot send message #{msgsend}")
+            pass
         await asyncio.sleep(1)
         async for message in ctx.message.channel.history(limit=1).filter(lambda m: m.author == client.user).map(lambda m: m):
             try:
                 await message.delete()
             except:
+                print(f"{Fore.RED}Error: {Fore.WHITE}Cannot delete message #{msgsend}")
                 pass
         await asyncio.sleep(60)
     return
