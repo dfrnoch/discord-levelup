@@ -16,7 +16,7 @@ client = commands.Bot(
     self_bot=True
 )
 
-token = "NzI0NTc5OTc4OTIxOTAyMTE0.X0GJFw.1kKCAoIHyzmlVUFlA4hCidSAd5Y"
+token = "your token"
 
 
 def random_phrase(length):
@@ -34,6 +34,8 @@ async def levelup(ctx,amount: int): # b'\xfc'
     while msgsend > 0:
         msgsend -= 1
         print(f"{Fore.YELLOW}Messages left to send: {Fore.WHITE}{msgsend}")
+        if msgsend == 0:
+            print(f"\n{Fore.GREEN}All messages was sent")
         rnd_out = random_phrase(5) + "-" + random_phrase(5) + " " + random_phrase(5) + "-" + random_phrase(5)
         await ctx.send(rnd_out)
         await asyncio.sleep(1)
@@ -42,7 +44,7 @@ async def levelup(ctx,amount: int): # b'\xfc'
                 await message.delete()
             except:
                 pass
-        await asyncio.sleep(59)
+        await asyncio.sleep(60)
     return
 
 @client.event
