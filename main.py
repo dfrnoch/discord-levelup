@@ -37,7 +37,7 @@ def scale(time):
 def Init():
     if config.get('token') == "token-here":
         os.system('cls')
-        print(f"\n\n{Fore.RED}Error {Fore.WHITE}You didnt put your token in the config.json file\n\n"+Fore.RESET)
+        print(f"\n\n{Fore.WHITE}[ {Fore.RED}E {Fore.WHITE}] {Fore.LIGHTBLACK_EX}You didnt put your token in the config.json file\n\n"+Fore.RESET)
         exit()
     else:
         token = config.get('token')
@@ -45,7 +45,7 @@ def Init():
             client.run(token, bot=False, reconnect=True)
             os.system(f'Discord LevelUpBot')
         except discord.errors.LoginFailure:
-            print(f"\n\n{Fore.RED}Error {Fore.WHITE}Token is invalid\n\n"+Fore.RESET)
+            print(f"\n\n{Fore.WHITE}[ {Fore.RED}E {Fore.WHITE}] {Fore.LIGHTBLACK_EX}Token is invalid\n\n"+Fore.RESET)
             exit()
 
 
@@ -56,32 +56,32 @@ def rnd2(length):
     return ''.join(random.choice(string.ascii_lowercase) for i in range(length))
 
 os.system('cls')
-print(f"{Fore.GREEN}Bot is ready")
-print(f"{Fore.WHITE}Write {Fore.YELLOW}!levelup <number of messages>{Fore.WHITE} to start level up")
+print(f"{Fore.WHITE}[ {Fore.GREEN}+ {Fore.WHITE}] {Fore.LIGHTBLACK_EX}Bot is ready!")
+print(f"{Fore.WHITE}[ {Fore.YELLOW}? {Fore.WHITE}] {Fore.LIGHTBLACK_EX}Write {Fore.WHITE}!levelup <number of messages>{Fore.LIGHTBLACK_EX} to start level up\n")
 
 
 @client.command()
 async def levelup(ctx,amount: int):
     await ctx.message.delete()
     msgsend = amount
-    print(f"\n{Fore.YELLOW}Sending {msgsend} messages\nEstimated Time: {scale(msgsend)}\n")
+    print(f"\n{Fore.WHITE}[ {Fore.YELLOW}? {Fore.WHITE}] {Fore.LIGHTBLACK_EX}Sending {Fore.WHITE}{msgsend} {Fore.LIGHTBLACK_EX}messages\nEstimated Time: {Fore.WHITE}{scale(msgsend)}\n")
     while msgsend > 0:
         try:
             msgsend -= 1
-            print(f"{Fore.YELLOW}Message sent! | Messages left to send: {Fore.WHITE}{msgsend} {Fore.YELLOW}| {Fore.YELLOW}Estimated Time: {Fore.WHITE}{scale(msgsend)}")
+            print(f"{Fore.WHITE}[ {Fore.GREEN}+ {Fore.WHITE}] {Fore.LIGHTBLACK_EX}Message sent! | Messages left to send: {Fore.WHITE}{msgsend} {Fore.LIGHTBLACK_EX}| Estimated Time: {Fore.WHITE}{scale(msgsend)}")
             if msgsend == 0:
-                print(f"\n{Fore.GREEN}All messages was sent")
+                print(f"\n{Fore.WHITE}[ {Fore.GREEN}+ {Fore.WHITE}] {Fore.LIGHTBLACK_EX}All messages was sent")
             output = rnd1(5) + " " + rnd2(5) + "-" + rnd2(5) + "" + rnd2(5) + "-" + rnd2(5) + " " + rnd1(5)
             await ctx.send(output)
         except:
-            print(f"{Fore.RED}Error: {Fore.WHITE}Cannot send message #{msgsend}")
+            print(f"{Fore.WHITE}[ {Fore.RED}- {Fore.WHITE}] {Fore.LIGHTBLACK_EX}Cannot send message {Fore.WHITE}#{msgsend}")
             pass
         await asyncio.sleep(1)
         async for message in ctx.message.channel.history(limit=1).filter(lambda m: m.author == client.user).map(lambda m: m):
             try:
                 await message.delete()
             except:
-                print(f"{Fore.RED}Error: {Fore.WHITE}Cannot delete message #{msgsend}")
+                print(f"{Fore.WHITE}[ {Fore.RED}- {Fore.WHITE}] {Fore.LIGHTBLACK_EX}Cannot delete message {Fore.WHITE}#{msgsend}")
                 pass
         await asyncio.sleep(60)
     return
@@ -94,9 +94,9 @@ async def on_command_error(ctx, error):
     if isinstance(error, commands.CommandNotFound):
         return
     elif isinstance(error, discord.errors.Forbidden):
-        print(f"{Fore.RED}Error: {Fore.WHITE}Discord error: {error}"+Fore.RESET)    
+        print(f"{Fore.WHITE}[ {Fore.RED}E {Fore.WHITE}] {Fore.LIGHTBLACK_EX}Discord error: {error}"+Fore.RESET)    
     else:
-        print(f"{Fore.RED}Error: {Fore.WHITE}{error_str}"+Fore.RESET)
+        print(f"{Fore.WHITE}[ {Fore.RED}E {Fore.WHITE}] {Fore.LIGHTBLACK_EX}{error_str}"+Fore.RESET)
 
 
 Init()
