@@ -6,9 +6,6 @@ import os
 import json
 from colorama import Fore
 
-
-
-
 from discord.ext import (
     commands,
     tasks
@@ -74,7 +71,7 @@ async def levelup(ctx,amount: int):
             print(f"{Fore.WHITE}[ {Fore.GREEN}+ {Fore.WHITE}] {Fore.LIGHTBLACK_EX}Message sent! | Messages left to send: {Fore.WHITE}{msgsend} {Fore.LIGHTBLACK_EX}| Estimated Time: {Fore.WHITE}{scale(msgsend)}")
             if msgsend == 0:
                 print(f"\n{Fore.WHITE}[ {Fore.GREEN}+ {Fore.WHITE}] {Fore.LIGHTBLACK_EX}All messages was sent")
-            output = rnd1(5) + " " + rnd2(5) + "-" + rnd2(5) + "" + rnd2(5) + "-" + rnd2(5) + " " + rnd1(5)
+            output = rnd1(5) + " " + rnd2(5) + "-" + rnd2(5) + " " + rnd2(5) + "-" + rnd2(5) + " " + rnd1(5)
             await ctx.send(output)
         except:
             print(f"{Fore.WHITE}[ {Fore.RED}- {Fore.WHITE}] {Fore.LIGHTBLACK_EX}Cannot send message {Fore.WHITE}#{msgsend}")
