@@ -23,7 +23,6 @@ with open('config.json') as f:
     
 token = config.get("token")
 
-
 def scale(time):
     defined = 60
     for unit in ["m", "h"]:
@@ -44,8 +43,6 @@ def Init():
         except discord.errors.LoginFailure:
             print(f"\n\n{Fore.WHITE}[ {Fore.RED}E {Fore.WHITE}] {Fore.LIGHTBLACK_EX}Token is invalid\n\n"+Fore.RESET)
             exit()
-
-
 
 def rnd1(length):
     return ''.join(random.choice(string.ascii_letters) for i in range(length))
